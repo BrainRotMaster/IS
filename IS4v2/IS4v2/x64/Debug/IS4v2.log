@@ -1,4 +1,2 @@
 ﻿  IS4v2.cpp
-C:\Users\vanya\source\repos\IS4v2\IS4v2\IS4v2.cpp(594,37): warning C4267: +=: преобразование из "size_t" в "int"; возможна потеря данных
-C:\Users\vanya\source\repos\IS4v2\IS4v2\IS4v2.cpp(595,39): warning C4267: -=: преобразование из "size_t" в "int"; возможна потеря данных
   IS4v2.vcxproj -> C:\Users\vanya\source\repos\IS4v2\x64\Debug\IS4v2.exe
