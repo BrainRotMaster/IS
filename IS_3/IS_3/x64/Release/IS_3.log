@@ -1,0 +1,13 @@
+﻿  IS_3.cpp
+C:\Users\vanya\source\repos\IS_3\IS_3\IS_3.cpp(299,25): warning C4566: символ, представленный универсальным именем символа "\u2705", невозможно представить в текущей кодовой странице (1251)
+C:\Users\vanya\source\repos\IS_3\IS_3\IS_3.cpp(305,25): warning C4566: символ, представленный универсальным именем символа "\u26A0", невозможно представить в текущей кодовой странице (1251)
+C:\Users\vanya\source\repos\IS_3\IS_3\IS_3.cpp(305,25): warning C4566: символ, представленный универсальным именем символа "\uFE0F", невозможно представить в текущей кодовой странице (1251)
+C:\Users\vanya\source\repos\IS_3\IS_3\IS_3.cpp(338,17): warning C4566: символ, представленный универсальным именем символа "\u274C", невозможно представить в текущей кодовой странице (1251)
+C:\Users\vanya\source\repos\IS_3\IS_3\IS_3.cpp(106,15): warning C4267: инициализация: преобразование из "size_t" в "int"; возможна потеря данных
+C:\Users\vanya\source\repos\IS_3\IS_3\IS_3.cpp(107,15): warning C4267: инициализация: преобразование из "size_t" в "int"; возможна потеря данных
+  Создание кода
+  2 of 1015 functions ( 0.2%) were compiled, the rest were copied from previous compilation.
+    0 functions were new in current compilation
+    1 functions had inline decision re-evaluated but remain unchanged
+  Создание кода завершено
+  IS_3.vcxproj -> C:\Users\vanya\source\repos\IS_3\x64\Release\IS_3.exe

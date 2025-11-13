@@ -1,0 +1,37 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\vanya\\source\\repos\\IS_3\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{5F24E72F-88E6-4B78-8FC0-F937FB32E86D}|IS_3\\IS_3.vcxproj|C:\\Users\\vanya\\source\\repos\\IS_3\\IS_3\\IS_3.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{5F24E72F-88E6-4B78-8FC0-F937FB32E86D}|IS_3\\IS_3.vcxproj|solutionrelative:IS_3\\IS_3.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "IS_3.cpp",
+              "DocumentMoniker": "C:\\Users\\vanya\\source\\repos\\IS_3\\IS_3\\IS_3.cpp",
+              "RelativeDocumentMoniker": "IS_3\\IS_3.cpp",
+              "ToolTip": "C:\\Users\\vanya\\source\\repos\\IS_3\\IS_3\\IS_3.cpp",
+              "RelativeToolTip": "IS_3\\IS_3.cpp",
+              "ViewState": "AgIAAJYAAAAAAAAAAAAAAKgAAAAeAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-10-25T13:16:07.704Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

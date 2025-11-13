@@ -1,0 +1,4 @@
+﻿  IS_3f.cpp
+C:\Users\vanya\source\repos\IS_3f\IS_3f\IS_3f.cpp(124,11): warning C4267: инициализация: преобразование из "size_t" в "int"; возможна потеря данных
+C:\Users\vanya\source\repos\IS_3f\IS_3f\IS_3f.cpp(125,21): warning C4244: инициализация: преобразование "double" в "int", возможна потеря данных
+  IS_3f.vcxproj -> C:\Users\vanya\source\repos\IS_3f\x64\Debug\IS_3f.exe

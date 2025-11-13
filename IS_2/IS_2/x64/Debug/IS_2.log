@@ -1,0 +1,8 @@
+﻿  IS_2.cpp
+C:\Users\vanya\source\repos\IS_2\IS_2\IS_2.cpp(267,23): warning C4267: инициализация: преобразование из "size_t" в "int"; возможна потеря данных
+C:\Users\vanya\source\repos\IS_2\IS_2\IS_2.cpp(302,23): warning C4267: инициализация: преобразование из "size_t" в "int"; возможна потеря данных
+C:\Users\vanya\source\repos\IS_2\IS_2\IS_2.cpp(334,67): warning C4267: =: преобразование из "size_t" в "int"; возможна потеря данных
+C:\Users\vanya\source\repos\IS_2\IS_2\IS_2.cpp(365,23): warning C4267: инициализация: преобразование из "size_t" в "int"; возможна потеря данных
+C:\Users\vanya\source\repos\IS_2\IS_2\IS_2.cpp(415,23): warning C4267: инициализация: преобразование из "size_t" в "int"; возможна потеря данных
+C:\Users\vanya\source\repos\IS_2\IS_2\IS_2.cpp(496,23): warning C4267: инициализация: преобразование из "size_t" в "int"; возможна потеря данных
+  IS_2.vcxproj -> C:\Users\vanya\source\repos\IS_2\x64\Debug\IS_2.exe

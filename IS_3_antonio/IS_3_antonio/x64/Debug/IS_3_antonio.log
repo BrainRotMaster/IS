@@ -1,0 +1,4 @@
+﻿  IS_3_antonio.cpp
+C:\Users\vanya\source\repos\IS_3_antonio\IS_3_antonio\IS_3_antonio.cpp(120,11): warning C4267: инициализация: преобразование из "size_t" в "int"; возможна потеря данных
+C:\Users\vanya\source\repos\IS_3_antonio\IS_3_antonio\IS_3_antonio.cpp(121,21): warning C4244: инициализация: преобразование "double" в "int", возможна потеря данных
+C:\Users\vanya\source\repos\IS_3_antonio\IS_3_antonio\IS_3_antonio.cpp(284,13): error C3861: DFSWithLimit: идентификатор не найден

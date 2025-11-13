@@ -1,0 +1,13 @@
+﻿  IS_2.cpp
+C:\Users\vanya\source\repos\IS_2\IS_2\IS_2.cpp(267,23): warning C4267: инициализация: преобразование из "size_t" в "int"; возможна потеря данных
+C:\Users\vanya\source\repos\IS_2\IS_2\IS_2.cpp(302,23): warning C4267: инициализация: преобразование из "size_t" в "int"; возможна потеря данных
+C:\Users\vanya\source\repos\IS_2\IS_2\IS_2.cpp(334,67): warning C4267: =: преобразование из "size_t" в "int"; возможна потеря данных
+C:\Users\vanya\source\repos\IS_2\IS_2\IS_2.cpp(365,23): warning C4267: инициализация: преобразование из "size_t" в "int"; возможна потеря данных
+C:\Users\vanya\source\repos\IS_2\IS_2\IS_2.cpp(415,23): warning C4267: инициализация: преобразование из "size_t" в "int"; возможна потеря данных
+C:\Users\vanya\source\repos\IS_2\IS_2\IS_2.cpp(496,23): warning C4267: инициализация: преобразование из "size_t" в "int"; возможна потеря данных
+  Создание кода
+  1 of 876 functions ( 0.1%) were compiled, the rest were copied from previous compilation.
+    0 functions were new in current compilation
+    0 functions had inline decision re-evaluated but remain unchanged
+  Создание кода завершено
+  IS_2.vcxproj -> C:\Users\vanya\source\repos\IS_2\x64\Release\IS_2.exe

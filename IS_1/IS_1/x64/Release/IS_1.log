@@ -1,0 +1,9 @@
+﻿  IS_1.cpp
+C:\Users\vanya\source\repos\IS_1\IS_1\IS_1.cpp(151,10): warning C4267: инициализация: преобразование из "size_t" в "int"; возможна потеря данных
+C:\Users\vanya\source\repos\IS_1\IS_1\IS_1.cpp(165,15): warning C4267: =: преобразование из "size_t" в "int"; возможна потеря данных
+  Создание кода
+  2 of 325 functions ( 0.6%) were compiled, the rest were copied from previous compilation.
+    0 functions were new in current compilation
+    0 functions had inline decision re-evaluated but remain unchanged
+  Создание кода завершено
+  IS_1.vcxproj -> C:\Users\vanya\source\repos\IS_1\x64\Release\IS_1.exe

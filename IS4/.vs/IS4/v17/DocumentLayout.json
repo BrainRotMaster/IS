@@ -1,0 +1,37 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\vanya\\source\\repos\\IS4\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{3213898D-2C25-4736-931F-077A24E4518C}|IS4\\IS4.vcxproj|C:\\Users\\vanya\\source\\repos\\IS4\\IS4\\IS4.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{3213898D-2C25-4736-931F-077A24E4518C}|IS4\\IS4.vcxproj|solutionrelative:IS4\\IS4.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "IS4.cpp",
+              "DocumentMoniker": "C:\\Users\\vanya\\source\\repos\\IS4\\IS4\\IS4.cpp",
+              "RelativeDocumentMoniker": "IS4\\IS4.cpp",
+              "ToolTip": "C:\\Users\\vanya\\source\\repos\\IS4\\IS4\\IS4.cpp",
+              "RelativeToolTip": "IS4\\IS4.cpp",
+              "ViewState": "AgIAAJQCAAAAAAAAAAAAAJsCAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-11-09T13:48:18.994Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

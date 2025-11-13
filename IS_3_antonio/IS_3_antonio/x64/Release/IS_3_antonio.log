@@ -1,0 +1,9 @@
+﻿  IS_3_antonio.cpp
+C:\Users\vanya\source\repos\IS_3_antonio\IS_3_antonio\IS_3_antonio.cpp(122,11): warning C4267: инициализация: преобразование из "size_t" в "int"; возможна потеря данных
+C:\Users\vanya\source\repos\IS_3_antonio\IS_3_antonio\IS_3_antonio.cpp(123,21): warning C4244: инициализация: преобразование "double" в "int", возможна потеря данных
+  Создание кода
+  1 of 835 functions ( 0.1%) were compiled, the rest were copied from previous compilation.
+    0 functions were new in current compilation
+    1 functions had inline decision re-evaluated but remain unchanged
+  Создание кода завершено
+  IS_3_antonio.vcxproj -> C:\Users\vanya\source\repos\IS_3_antonio\x64\Release\IS_3_antonio.exe
