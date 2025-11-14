@@ -550,26 +550,32 @@ public:
     // Эвристика
     int evaluate(int playerRoot) const {
         int score = 0;
+
+
+        // Определим текущую фазу
         bool placing = phaseOfSet;
+
 
         // 1) Разница фишек
         score += (playerPieces[playerRoot] - playerPieces[1 - playerRoot]) * 100;
 
+
         // 2) Количество сформированных мельниц
         int millsCountRoot = 0, millsCountOpp = 0;
         for (const auto& mill : mills) {
-            bool allMy = true, allOpp = true;
+            bool allRoot = true, allOpp = true;
             for (const auto& p : mill) {
-                if (board[p.x][p.y] != getPlayerSymbol(playerRoot)) allMy = false;
+                if (board[p.x][p.y] != getPlayerSymbol(playerRoot)) allRoot = false;
                 if (board[p.x][p.y] != getPlayerSymbol(1 - playerRoot)) allOpp = false;
             }
-            if (allMy) millsCountRoot++;
+            if (allRoot) millsCountRoot++;
             if (allOpp) millsCountOpp++;
         }
         score += (millsCountRoot - millsCountOpp) * 250;
 
+
         // 3) Близость к завершению мельницы (2 in row)
-        int nearmillsMy = 0, nearmillsOpp = 0;
+        int nearmillsRoot = 0, nearmillsOpp = 0;
         for (const auto& mill : mills) {
             int rcount = 0, ocount = 0, empt = 0;
             for (const auto& p : mill) {
@@ -577,11 +583,12 @@ public:
                 else if (board[p.x][p.y] == getPlayerSymbol(1 - playerRoot)) ocount++;
                 else if (board[p.x][p.y] == '.') empt++;
             }
-            if (rcount == 2 && empt == 1) nearmillsMy++;
+            if (rcount == 2 && empt == 1) nearmillsRoot++;
             if (ocount == 2 && empt == 1) nearmillsOpp++;
         }
-        score += nearmillsMy * 80;
-        score -= nearmillsOpp * 120; // упор на защиту
+        score += nearmillsRoot * 80; //атака
+        score -= nearmillsOpp * 120; // оборона
+
 
         // 4) Мобильность
         auto myMoves = getPossibleMoves(playerRoot);
@@ -589,17 +596,15 @@ public:
         score += (int)myMoves.size() * 6;
         score -= (int)oppMoves.size() * 8;
 
+
         // 5) Контроль ключевых позиций
-        vector<Position> keyPositions = { Position(3,0), Position(3,2), Position(3,4), Position(3,6), Position(0,3), Position(2,3), Position(4,3), Position(6,3) };
-        vector<Position> keyPositionsBIG = { Position(3,1), Position(1,3), Position(3,5), Position(5,3) };
+        vector<Position> keyPositions = { Position(3,1), Position(3,2), Position(3,4), Position(3,5), Position(1,3), Position(2,3), Position(4,3), Position(5,3) };
         for (const auto& pos : keyPositions) {
             if (board[pos.x][pos.y] == getPlayerSymbol(playerRoot)) score += 15;
             else if (board[pos.x][pos.y] == getPlayerSymbol(1 - playerRoot)) score -= 15;
         }
-        for (const auto& pos : keyPositionsBIG) {
-            if (board[pos.x][pos.y] == getPlayerSymbol(playerRoot)) score += 20;
-            else if (board[pos.x][pos.y] == getPlayerSymbol(1 - playerRoot)) score -= 20;
-        }
+
+
         return score;
     }
 
@@ -629,7 +634,7 @@ public:
     void MillError(const string& msg) const { cout << "ERROR: " << msg << endl; }
 };
 
-// Класс с альфа-бета отсечением
+//альфа-бета отсечение
 class MillAI {
 private:
     int maxDepth;
@@ -640,7 +645,7 @@ public:
         rng.seed((unsigned)chrono::high_resolution_clock::now().time_since_epoch().count());
     }
 
-    // Альфа-бета: rootPlayer — игрок, от лица которого считаем (AI)
+    // Альфа-бета: rootPlayer игрок от лица которого считаем
     pair<vector<string>, int> alphaBeta(MillGame game, int depth, int alpha, int beta, int player, int rootPlayer,
         chrono::steady_clock::time_point startTime) {
         auto now = chrono::steady_clock::now();
