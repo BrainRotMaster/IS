@@ -1,0 +1,69 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\vanya\\source\\repos\\IS_7c\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{C88923F9-4A8D-43EE-AD26-44A960ACD31E}|prod_sys\\prod_sys.csproj|c:\\users\\vanya\\source\\repos\\is_7c\\prod_sys\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C88923F9-4A8D-43EE-AD26-44A960ACD31E}|prod_sys\\prod_sys.csproj|solutionrelative:prod_sys\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C88923F9-4A8D-43EE-AD26-44A960ACD31E}|prod_sys\\prod_sys.csproj|C:\\Users\\vanya\\source\\repos\\IS_7c\\prod_sys\\fact.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C88923F9-4A8D-43EE-AD26-44A960ACD31E}|prod_sys\\prod_sys.csproj|solutionrelative:prod_sys\\fact.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C88923F9-4A8D-43EE-AD26-44A960ACD31E}|prod_sys\\prod_sys.csproj|C:\\Users\\vanya\\source\\repos\\IS_7c\\prod_sys\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{C88923F9-4A8D-43EE-AD26-44A960ACD31E}|prod_sys\\prod_sys.csproj|solutionrelative:prod_sys\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Form1.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
+              "DocumentMoniker": "C:\\Users\\vanya\\source\\repos\\IS_7c\\prod_sys\\Form1.cs",
+              "RelativeDocumentMoniker": "prod_sys\\Form1.cs",
+              "ToolTip": "C:\\Users\\vanya\\source\\repos\\IS_7c\\prod_sys\\Form1.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
+              "RelativeToolTip": "prod_sys\\Form1.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-13T16:06:19.695Z",
+              "EditorCaption": " [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Form1.cs",
+              "DocumentMoniker": "C:\\Users\\vanya\\source\\repos\\IS_7c\\prod_sys\\Form1.cs",
+              "RelativeDocumentMoniker": "prod_sys\\Form1.cs",
+              "ToolTip": "C:\\Users\\vanya\\source\\repos\\IS_7c\\prod_sys\\Form1.cs",
+              "RelativeToolTip": "prod_sys\\Form1.cs",
+              "ViewState": "AgIAAGUAAAAAAAAAAAAAwO8AAABFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-07T14:43:22.916Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Fact.cs",
+              "DocumentMoniker": "C:\\Users\\vanya\\source\\repos\\IS_7c\\prod_sys\\Fact.cs",
+              "RelativeDocumentMoniker": "prod_sys\\Fact.cs",
+              "ToolTip": "C:\\Users\\vanya\\source\\repos\\IS_7c\\prod_sys\\Fact.cs",
+              "RelativeToolTip": "prod_sys\\Fact.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAEAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-07T14:43:22.98Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

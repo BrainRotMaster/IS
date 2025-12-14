@@ -1,0 +1,4 @@
+﻿digraph Proof {
+ rankdir=LR; node [shape=box];
+ "f1000" [label="f1000\nПодходящий тур: Пляжный отдых на Бали" color=lightgrey];
+}

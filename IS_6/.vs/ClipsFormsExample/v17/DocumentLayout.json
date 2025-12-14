@@ -1,0 +1,70 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\vanya\\source\\repos\\IS_6\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{243F17BC-AE10-4F70-AF17-6FCDDFC39F00}|ClipsFormsExample.csproj|c:\\users\\vanya\\source\\repos\\is_6\\clipsformsexample.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{243F17BC-AE10-4F70-AF17-6FCDDFC39F00}|ClipsFormsExample.csproj|solutionrelative:clipsformsexample.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{243F17BC-AE10-4F70-AF17-6FCDDFC39F00}|ClipsFormsExample.csproj|C:\\Users\\vanya\\source\\repos\\IS_6\\clipsformsexample.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{243F17BC-AE10-4F70-AF17-6FCDDFC39F00}|ClipsFormsExample.csproj|solutionrelative:clipsformsexample.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{243F17BC-AE10-4F70-AF17-6FCDDFC39F00}|ClipsFormsExample.csproj|C:\\Users\\vanya\\source\\repos\\IS_6\\clipsformsexample.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{243F17BC-AE10-4F70-AF17-6FCDDFC39F00}|ClipsFormsExample.csproj|solutionrelative:clipsformsexample.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 2,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "ClipsFormsExample.Designer.cs",
+              "DocumentMoniker": "C:\\Users\\vanya\\source\\repos\\IS_6\\ClipsFormsExample.Designer.cs",
+              "RelativeDocumentMoniker": "ClipsFormsExample.Designer.cs",
+              "ToolTip": "C:\\Users\\vanya\\source\\repos\\IS_6\\ClipsFormsExample.Designer.cs",
+              "RelativeToolTip": "ClipsFormsExample.Designer.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAASAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-14T15:21:38.998Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "ClipsFormsExample.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
+              "DocumentMoniker": "C:\\Users\\vanya\\source\\repos\\IS_6\\ClipsFormsExample.cs",
+              "RelativeDocumentMoniker": "ClipsFormsExample.cs",
+              "ToolTip": "C:\\Users\\vanya\\source\\repos\\IS_6\\ClipsFormsExample.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
+              "RelativeToolTip": "ClipsFormsExample.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-07T11:52:12.305Z",
+              "EditorCaption": " [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "ClipsFormsExample.cs",
+              "DocumentMoniker": "C:\\Users\\vanya\\source\\repos\\IS_6\\ClipsFormsExample.cs",
+              "RelativeDocumentMoniker": "ClipsFormsExample.cs",
+              "ToolTip": "C:\\Users\\vanya\\source\\repos\\IS_6\\ClipsFormsExample.cs",
+              "RelativeToolTip": "ClipsFormsExample.cs",
+              "ViewState": "AgIAAF8AAAAAAAAAAAAuwM4AAAAXAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-07T11:24:50.808Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

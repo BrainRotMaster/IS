@@ -1,0 +1,29 @@
+C:\Users\admin\Desktop\мехмат\4 курс\интеллектуальные системы\CLIPSFormsExample\bin\x86\Debug\persons.clp
+C:\Users\admin\Desktop\мехмат\4 курс\интеллектуальные системы\CLIPSFormsExample\bin\x86\Debug\AutoFormsExample.exe.config
+C:\Users\admin\Desktop\мехмат\4 курс\интеллектуальные системы\CLIPSFormsExample\bin\x86\Debug\AutoFormsExample.exe
+C:\Users\admin\Desktop\мехмат\4 курс\интеллектуальные системы\CLIPSFormsExample\bin\x86\Debug\AutoFormsExample.pdb
+C:\Users\admin\Desktop\мехмат\4 курс\интеллектуальные системы\CLIPSFormsExample\bin\x86\Debug\CLIPSCLRWrapper.dll
+C:\Users\admin\Desktop\мехмат\4 курс\интеллектуальные системы\CLIPSFormsExample\bin\x86\Debug\Microsoft.Speech.dll
+C:\Users\admin\Desktop\мехмат\4 курс\интеллектуальные системы\CLIPSFormsExample\obj\x86\Debug\ClipsFormsExample.csproj.AssemblyReference.cache
+C:\Users\admin\Desktop\мехмат\4 курс\интеллектуальные системы\CLIPSFormsExample\obj\x86\Debug\ClipsFormsExample.ClipsFormsExample.resources
+C:\Users\admin\Desktop\мехмат\4 курс\интеллектуальные системы\CLIPSFormsExample\obj\x86\Debug\AutoFormsExample.Properties.Resources.resources
+C:\Users\admin\Desktop\мехмат\4 курс\интеллектуальные системы\CLIPSFormsExample\obj\x86\Debug\ClipsFormsExample.csproj.GenerateResource.cache
+C:\Users\admin\Desktop\мехмат\4 курс\интеллектуальные системы\CLIPSFormsExample\obj\x86\Debug\ClipsFormsExample.csproj.CoreCompileInputs.cache
+C:\Users\admin\Desktop\мехмат\4 курс\интеллектуальные системы\CLIPSFormsExample\obj\x86\Debug\ClipsFor.DC6785BF.Up2Date
+C:\Users\admin\Desktop\мехмат\4 курс\интеллектуальные системы\CLIPSFormsExample\obj\x86\Debug\AutoFormsExample.exe
+C:\Users\admin\Desktop\мехмат\4 курс\интеллектуальные системы\CLIPSFormsExample\obj\x86\Debug\AutoFormsExample.pdb
+C:\Users\vanya\source\repos\CLIPSFormsExample\CLIPSFormsExample\bin\x86\Debug\persons.clp
+C:\Users\vanya\source\repos\CLIPSFormsExample\CLIPSFormsExample\bin\x86\Debug\AutoFormsExample.exe.config
+C:\Users\vanya\source\repos\CLIPSFormsExample\CLIPSFormsExample\bin\x86\Debug\AutoFormsExample.exe
+C:\Users\vanya\source\repos\CLIPSFormsExample\CLIPSFormsExample\bin\x86\Debug\AutoFormsExample.pdb
+C:\Users\vanya\source\repos\CLIPSFormsExample\CLIPSFormsExample\bin\x86\Debug\CLIPSCLRWrapper.dll
+C:\Users\vanya\source\repos\CLIPSFormsExample\CLIPSFormsExample\bin\x86\Debug\Microsoft.Speech.dll
+C:\Users\vanya\source\repos\CLIPSFormsExample\CLIPSFormsExample\obj\x86\Debug\ClipsFormsExample.csproj.AssemblyReference.cache
+C:\Users\vanya\source\repos\CLIPSFormsExample\CLIPSFormsExample\obj\x86\Debug\AutoFormsExample.exe.config
+C:\Users\vanya\source\repos\CLIPSFormsExample\CLIPSFormsExample\obj\x86\Debug\ClipsFormsExample.ClipsFormsExample.resources
+C:\Users\vanya\source\repos\CLIPSFormsExample\CLIPSFormsExample\obj\x86\Debug\AutoFormsExample.Properties.Resources.resources
+C:\Users\vanya\source\repos\CLIPSFormsExample\CLIPSFormsExample\obj\x86\Debug\ClipsFormsExample.csproj.GenerateResource.cache
+C:\Users\vanya\source\repos\CLIPSFormsExample\CLIPSFormsExample\obj\x86\Debug\ClipsFormsExample.csproj.CoreCompileInputs.cache
+C:\Users\vanya\source\repos\CLIPSFormsExample\CLIPSFormsExample\obj\x86\Debug\ClipsFor.DC6785BF.Up2Date
+C:\Users\vanya\source\repos\CLIPSFormsExample\CLIPSFormsExample\obj\x86\Debug\AutoFormsExample.exe
+C:\Users\vanya\source\repos\CLIPSFormsExample\CLIPSFormsExample\obj\x86\Debug\AutoFormsExample.pdb

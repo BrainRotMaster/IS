@@ -1,0 +1,16 @@
+C:\Users\vanya\source\repos\CG5\bin\Debug\CG5.exe.config
+C:\Users\vanya\source\repos\CG5\bin\Debug\CG5.exe
+C:\Users\vanya\source\repos\CG5\bin\Debug\CG5.pdb
+C:\Users\vanya\source\repos\CG5\obj\Debug\CG5.csproj.AssemblyReference.cache
+C:\Users\vanya\source\repos\CG5\obj\Debug\CG5.csproj.CoreCompileInputs.cache
+C:\Users\vanya\source\repos\CG5\obj\Debug\CG5.exe
+C:\Users\vanya\source\repos\CG5\obj\Debug\CG5.pdb
+C:\Users\vanya\source\repos\CG5\obj\Debug\CG5.exe.config
+C:\Users\vanya\source\repos\IS5\bin\Debug\CG5.exe.config
+C:\Users\vanya\source\repos\IS5\bin\Debug\CG5.exe
+C:\Users\vanya\source\repos\IS5\bin\Debug\CG5.pdb
+C:\Users\vanya\source\repos\IS5\obj\Debug\CG5.csproj.AssemblyReference.cache
+C:\Users\vanya\source\repos\IS5\obj\Debug\CG5.exe.config
+C:\Users\vanya\source\repos\IS5\obj\Debug\CG5.csproj.CoreCompileInputs.cache
+C:\Users\vanya\source\repos\IS5\obj\Debug\CG5.exe
+C:\Users\vanya\source\repos\IS5\obj\Debug\CG5.pdb

@@ -1,0 +1,39 @@
+D:\Documents\Мехмат_учебники_инфа_остальное\4 курс\Интел системы (экз)\Практика_ИС\Lab_6\prod_sys\bin\Release\prod_sys.exe.config
+D:\Documents\Мехмат_учебники_инфа_остальное\4 курс\Интел системы (экз)\Практика_ИС\Lab_6\prod_sys\bin\Release\prod_sys.exe
+D:\Documents\Мехмат_учебники_инфа_остальное\4 курс\Интел системы (экз)\Практика_ИС\Lab_6\prod_sys\bin\Release\prod_sys.pdb
+D:\Documents\Мехмат_учебники_инфа_остальное\4 курс\Интел системы (экз)\Практика_ИС\Lab_6\prod_sys\bin\Release\CLIPSCLRWrapper.dll
+D:\Documents\Мехмат_учебники_инфа_остальное\4 курс\Интел системы (экз)\Практика_ИС\Lab_6\prod_sys\obj\Release\prod_sys.csproj.AssemblyReference.cache
+D:\Documents\Мехмат_учебники_инфа_остальное\4 курс\Интел системы (экз)\Практика_ИС\Lab_6\prod_sys\obj\Release\prod_sys.csproj.SuggestedBindingRedirects.cache
+D:\Documents\Мехмат_учебники_инфа_остальное\4 курс\Интел системы (экз)\Практика_ИС\Lab_6\prod_sys\obj\Release\prod_sys.Form1.resources
+D:\Documents\Мехмат_учебники_инфа_остальное\4 курс\Интел системы (экз)\Практика_ИС\Lab_6\prod_sys\obj\Release\prod_sys.Properties.Resources.resources
+D:\Documents\Мехмат_учебники_инфа_остальное\4 курс\Интел системы (экз)\Практика_ИС\Lab_6\prod_sys\obj\Release\prod_sys.csproj.GenerateResource.cache
+D:\Documents\Мехмат_учебники_инфа_остальное\4 курс\Интел системы (экз)\Практика_ИС\Lab_6\prod_sys\obj\Release\prod_sys.csproj.CoreCompileInputs.cache
+D:\Documents\Мехмат_учебники_инфа_остальное\4 курс\Интел системы (экз)\Практика_ИС\Lab_6\prod_sys\obj\Release\prod_sys.csproj.CopyComplete
+D:\Documents\Мехмат_учебники_инфа_остальное\4 курс\Интел системы (экз)\Практика_ИС\Lab_6\prod_sys\obj\Release\prod_sys.exe
+D:\Documents\Мехмат_учебники_инфа_остальное\4 курс\Интел системы (экз)\Практика_ИС\Lab_6\prod_sys\obj\Release\prod_sys.pdb
+C:\Users\vanya\OneDrive\Документы\YanaCist\drive-download-20250914T170212Z-1-001\Интел системы (экз)\Интел системы (экз)\Практика_ИС\Lab_6\prod_sys\bin\Release\prod_sys.exe.config
+C:\Users\vanya\OneDrive\Документы\YanaCist\drive-download-20250914T170212Z-1-001\Интел системы (экз)\Интел системы (экз)\Практика_ИС\Lab_6\prod_sys\bin\Release\prod_sys.exe
+C:\Users\vanya\OneDrive\Документы\YanaCist\drive-download-20250914T170212Z-1-001\Интел системы (экз)\Интел системы (экз)\Практика_ИС\Lab_6\prod_sys\bin\Release\prod_sys.pdb
+C:\Users\vanya\OneDrive\Документы\YanaCist\drive-download-20250914T170212Z-1-001\Интел системы (экз)\Интел системы (экз)\Практика_ИС\Lab_6\prod_sys\bin\Release\CLIPSCLRWrapper.dll
+C:\Users\vanya\OneDrive\Документы\YanaCist\drive-download-20250914T170212Z-1-001\Интел системы (экз)\Интел системы (экз)\Практика_ИС\Lab_6\prod_sys\obj\Release\prod_sys.csproj.AssemblyReference.cache
+C:\Users\vanya\OneDrive\Документы\YanaCist\drive-download-20250914T170212Z-1-001\Интел системы (экз)\Интел системы (экз)\Практика_ИС\Lab_6\prod_sys\obj\Release\prod_sys.exe.config
+C:\Users\vanya\OneDrive\Документы\YanaCist\drive-download-20250914T170212Z-1-001\Интел системы (экз)\Интел системы (экз)\Практика_ИС\Lab_6\prod_sys\obj\Release\prod_sys.Form1.resources
+C:\Users\vanya\OneDrive\Документы\YanaCist\drive-download-20250914T170212Z-1-001\Интел системы (экз)\Интел системы (экз)\Практика_ИС\Lab_6\prod_sys\obj\Release\prod_sys.Properties.Resources.resources
+C:\Users\vanya\OneDrive\Документы\YanaCist\drive-download-20250914T170212Z-1-001\Интел системы (экз)\Интел системы (экз)\Практика_ИС\Lab_6\prod_sys\obj\Release\prod_sys.csproj.GenerateResource.cache
+C:\Users\vanya\OneDrive\Документы\YanaCist\drive-download-20250914T170212Z-1-001\Интел системы (экз)\Интел системы (экз)\Практика_ИС\Lab_6\prod_sys\obj\Release\prod_sys.csproj.CoreCompileInputs.cache
+C:\Users\vanya\OneDrive\Документы\YanaCist\drive-download-20250914T170212Z-1-001\Интел системы (экз)\Интел системы (экз)\Практика_ИС\Lab_6\prod_sys\obj\Release\prod_sys.csproj.Up2Date
+C:\Users\vanya\OneDrive\Документы\YanaCist\drive-download-20250914T170212Z-1-001\Интел системы (экз)\Интел системы (экз)\Практика_ИС\Lab_6\prod_sys\obj\Release\prod_sys.exe
+C:\Users\vanya\OneDrive\Документы\YanaCist\drive-download-20250914T170212Z-1-001\Интел системы (экз)\Интел системы (экз)\Практика_ИС\Lab_6\prod_sys\obj\Release\prod_sys.pdb
+C:\Users\vanya\source\repos\IS_6c\prod_sys\bin\Release\prod_sys.exe.config
+C:\Users\vanya\source\repos\IS_6c\prod_sys\bin\Release\prod_sys.exe
+C:\Users\vanya\source\repos\IS_6c\prod_sys\bin\Release\prod_sys.pdb
+C:\Users\vanya\source\repos\IS_6c\prod_sys\bin\Release\CLIPSCLRWrapper.dll
+C:\Users\vanya\source\repos\IS_6c\prod_sys\obj\Release\prod_sys.csproj.AssemblyReference.cache
+C:\Users\vanya\source\repos\IS_6c\prod_sys\obj\Release\prod_sys.exe.config
+C:\Users\vanya\source\repos\IS_6c\prod_sys\obj\Release\prod_sys.Form1.resources
+C:\Users\vanya\source\repos\IS_6c\prod_sys\obj\Release\prod_sys.Properties.Resources.resources
+C:\Users\vanya\source\repos\IS_6c\prod_sys\obj\Release\prod_sys.csproj.GenerateResource.cache
+C:\Users\vanya\source\repos\IS_6c\prod_sys\obj\Release\prod_sys.csproj.CoreCompileInputs.cache
+C:\Users\vanya\source\repos\IS_6c\prod_sys\obj\Release\prod_sys.csproj.Up2Date
+C:\Users\vanya\source\repos\IS_6c\prod_sys\obj\Release\prod_sys.exe
+C:\Users\vanya\source\repos\IS_6c\prod_sys\obj\Release\prod_sys.pdb
