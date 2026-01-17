@@ -79,6 +79,19 @@ namespace ClipsFormsExample
             Label lbl = new Label { Text = text, AutoSize = true };
             panelQuestions.Controls.Add(lbl);
 
+            string GroupOf(string id)
+            {
+                int n = int.Parse(id.Substring(1));
+                if (n <= 5) return "class";
+                if (n <= 10) return "kingdom";
+                if (n <= 15) return "region";
+                if (n <= 20) return "boss";
+                if (n <= 25) return "artifact";
+                if (n <= 30) return "magic type";
+                if (n <= 35) return "building";
+                if (n <= 40) return "world state";
+                return "other";
+            }
             var options = facts.Where(f => GroupOf(f.id) == group).ToList();
             foreach (var f in options)
             {
@@ -102,12 +115,24 @@ namespace ClipsFormsExample
             Fact fact = facts.First(x => x.id == id);
             // Ассерт выбранного факта
             clips.Eval($"(assert (item (name {fact.id}) (conf {fact.conf.ToString(CultureInfo.InvariantCulture)})))");
-            richTextBox1.Text += $"Выбран факт {id} : {facts.Where(x => x.id==id).First().desc}\n";
+            richTextBox1.Text += $"Выбран факт {id} : {facts.Where(x => x.id == id).First().desc}\n";
 
             clips.Run();
             HandleResponse();
 
-            // Переходим к следующему вопросу
+            string NextGroup(string lastId)
+            {
+                // возвращает следующую GroupOf
+                int n = int.Parse(lastId.Substring(1));
+                if (n <= 5) return "kingdom";
+                if (n <= 10) return "region";
+                if (n <= 15) return "boss";
+                if (n <= 20) return "artifact";
+                if (n <= 25) return "magic type";
+                if (n <= 30) return "building";
+                if (n <= 35) return "world state";
+                return null;
+            }
             string nextGroup = NextGroup(id);
             if (nextGroup != null)
             {
@@ -148,33 +173,6 @@ namespace ClipsFormsExample
             }
         }
 
-        private string NextGroup(string lastId)
-        {
-            // возвращает следующую GroupOf
-            int n = int.Parse(lastId.Substring(1));
-            if (n <= 5) return "kingdom";
-            if (n <= 10) return "region";
-            if (n <= 15) return "boss";
-            if (n <= 20) return "artifact";
-            if (n <= 25) return "magic type";
-            if (n <= 30) return "building";
-            if (n <= 35) return "world state";
-            return null;
-        }
-
-        private string GroupOf(string id)
-        {
-            int n = int.Parse(id.Substring(1));
-            if (n <= 5) return "class";
-            if (n <= 10) return "kingdom";
-            if (n <= 15) return "region";
-            if (n <= 20) return "boss";
-            if (n <= 25) return "artifact";
-            if (n <= 30) return "magic type";
-            if (n <= 35) return "building";
-            if (n <= 40) return "world state";
-            return "other";
-        }
 
         string GetFactName(FactInstance f)
         {

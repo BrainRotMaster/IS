@@ -40,14 +40,14 @@
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "ClipsFormsExample.cs [Design]",
+              "Title": "ClipsFormsExample.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
               "DocumentMoniker": "C:\\Users\\vanya\\source\\repos\\IS_7\\ClipsFormsExample.cs",
               "RelativeDocumentMoniker": "ClipsFormsExample.cs",
-              "ToolTip": "C:\\Users\\vanya\\source\\repos\\IS_7\\ClipsFormsExample.cs [Design]",
-              "RelativeToolTip": "ClipsFormsExample.cs [Design]",
+              "ToolTip": "C:\\Users\\vanya\\source\\repos\\IS_7\\ClipsFormsExample.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
+              "RelativeToolTip": "ClipsFormsExample.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-12-07T11:52:12.305Z",
-              "EditorCaption": " [Design]"
+              "EditorCaption": " [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]"
             },
             {
               "$type": "Document",
@@ -57,7 +57,7 @@
               "RelativeDocumentMoniker": "ClipsFormsExample.cs",
               "ToolTip": "C:\\Users\\vanya\\source\\repos\\IS_7\\ClipsFormsExample.cs",
               "RelativeToolTip": "ClipsFormsExample.cs",
-              "ViewState": "AgIAAEoAAAAAAAAAAAA8wGgAAABeAAAAAAAAAA==",
+              "ViewState": "AgIAANoAAAAAAAAAAADwvx0BAAAMAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-12-07T11:24:50.808Z",
               "EditorCaption": ""

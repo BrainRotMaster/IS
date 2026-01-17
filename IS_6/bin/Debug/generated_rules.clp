@@ -1,29 +1,53 @@
 ﻿(deftemplate item (slot name))
 (deftemplate option (slot id) (slot label) (slot group))
-(deftemplate ioproxy (slot id) (slot text) (multislot options))
-(deftemplate answer (slot id) (slot value))
+(deftemplate ioproxy
+  (slot fact-id)
+  (multislot answers)
+  (multislot messages)
+  (slot reaction)
+  (slot value)
+  (slot restore)
+)
 (deftemplate asked (slot id))
 
-(defrule clear-message
+(deffacts proxy-fact
+  (ioproxy
+    (fact-id none)
+    (answers)
+    (messages)
+    (reaction none)
+    (value none)
+    (restore none))
+)
+
+(defrule clear-messages
   (declare (salience 100))
   ?c <- (clearmessage)
-  ?m <- (sendmessagehalt ?)
-  =>
-  (retract ?c)
-  (retract ?m)
-)
-
-(defrule clear-ioproxy
-  (declare (salience 100))
-  ?c <- (clearquestion)
   ?p <- (ioproxy)
   =>
-  (retract ?c)
-  (retract ?p)
-)
+  (modify ?p (messages))
+  (retract ?c))
+
+(defrule set-output
+  (declare (salience 99))
+  ?m <- (sendmessage ?text)
+  ?p <- (ioproxy (messages $?msgs))
+  =>
+  (modify ?p (messages $?msgs ?text))
+  (retract ?m))
+
+(defrule handle-user-answer
+  (declare (salience 200))
+  ?p <- (ioproxy (reaction answered) (value ?id))
+  =>
+  (assert (item (name ?id)))
+  (modify ?p
+     (reaction none)
+     (value none)
+     (answers)))
 
 (deffacts options
-  (option (id f1) (label "Рыцарь") (group class))
+  (option (id f1) (label "Рыцарь123") (group class))
   (option (id f2) (label "Маг") (group class))
   (option (id f3) (label "Наёмник") (group class))
   (option (id f4) (label "Жрица") (group class))
@@ -128,109 +152,73 @@
 (defrule ask-class
   (declare (salience 50))
   (not (asked (id ask_class)))
+  ?p <- (ioproxy)
   =>
-  (assert (ioproxy (id ask_class) (text "Выберите класс:") (options (find-all-facts ((?o option)) (eq ?o:group class)))))
-)
-
-(defrule handle-class
-  ?a <- (answer (id ask_class) (value ?v))
-  ?p <- (ioproxy (id ask_class))
-  =>
-  (retract ?a)
-  (retract ?p)
-  (assert (item (name ?v)))
-  (assert (asked (id ask_class)))
-)
+  (modify ?p
+     (fact-id ask_class)
+     (answers (find-all-facts ((?o option)) (eq ?o:group class)))
+     (reaction none)
+     (value none)))
 
 (defrule ask-kingdom
   (declare (salience 50))
   (asked (id ask_class))
   (not (asked (id ask_kingdom)))
+  ?p <- (ioproxy)
   =>
-  (assert (ioproxy (id ask_kingdom) (text "Выберите королевство:") (options (find-all-facts ((?o option)) (eq ?o:group kingdom)))))
-)
-
-(defrule handle-kingdom
-  ?a <- (answer (id ask_kingdom) (value ?v))
-  ?p <- (ioproxy (id ask_kingdom))
-  =>
-  (retract ?a)
-  (retract ?p)
-  (assert (item (name ?v)))
-  (assert (asked (id ask_kingdom)))
-)
+  (modify ?p
+     (fact-id ask_kingdom)
+     (answers (find-all-facts ((?o option)) (eq ?o:group kingdom)))
+     (reaction none)
+     (value none)))
 
 (defrule ask-region
   (declare (salience 50))
   (asked (id ask_kingdom))
   (not (asked (id ask_region)))
+  ?p <- (ioproxy)
   =>
-  (assert (ioproxy (id ask_region) (text "Выберите регион:") (options (find-all-facts ((?o option)) (eq ?o:group region)))))
-)
-
-(defrule handle-region
-  ?a <- (answer (id ask_region) (value ?v))
-  ?p <- (ioproxy (id ask_region))
-  =>
-  (retract ?a)
-  (retract ?p)
-  (assert (item (name ?v)))
-  (assert (asked (id ask_region)))
-)
+  (modify ?p
+     (fact-id ask_region)
+     (answers (find-all-facts ((?o option)) (eq ?o:group region)))
+     (reaction none)
+     (value none)))
 
 (defrule ask-entity
   (declare (salience 50))
   (asked (id ask_region))
   (not (asked (id ask_entity)))
+  ?p <- (ioproxy)
   =>
-  (assert (ioproxy (id ask_entity) (text "Выберите сущность:") (options (find-all-facts ((?o option)) (eq ?o:group entity)))))
-)
-
-(defrule handle-entity
-  ?a <- (answer (id ask_entity) (value ?v))
-  ?p <- (ioproxy (id ask_entity))
-  =>
-  (retract ?a)
-  (retract ?p)
-  (assert (item (name ?v)))
-  (assert (asked (id ask_entity)))
-)
+  (modify ?p
+     (fact-id ask_entity)
+     (answers (find-all-facts ((?o option)) (eq ?o:group entity)))
+     (reaction none)
+     (value none)))
 
 (defrule ask-artifact
   (declare (salience 50))
   (asked (id ask_entity))
   (not (asked (id ask_artifact)))
+  ?p <- (ioproxy)
   =>
-  (assert (ioproxy (id ask_artifact) (text "Выберите артефакт:") (options (find-all-facts ((?o option)) (eq ?o:group artifact)))))
-)
-
-(defrule handle-artifact
-  ?a <- (answer (id ask_artifact) (value ?v))
-  ?p <- (ioproxy (id ask_artifact))
-  =>
-  (retract ?a)
-  (retract ?p)
-  (assert (item (name ?v)))
-  (assert (asked (id ask_artifact)))
-)
+  (modify ?p
+     (fact-id ask_artifact)
+     (answers (find-all-facts ((?o option)) (eq ?o:group artifact)))
+     (reaction none)
+     (value none)))
 
 (defrule ask-state
   (declare (salience 50))
   (asked (id ask_artifact))
   (not (asked (id ask_state)))
+  ?p <- (ioproxy)
   =>
-  (assert (ioproxy (id ask_state) (text "Выберите событие:") (options (find-all-facts ((?o option)) (eq ?o:group state)))))
-)
-
-(defrule handle-state
-  ?a <- (answer (id ask_state) (value ?v))
-  ?p <- (ioproxy (id ask_state))
-  =>
-  (retract ?a)
-  (retract ?p)
-  (assert (item (name ?v)))
-  (assert (asked (id ask_state)))
-)
+  (modify ?p
+     (fact-id ask_state)
+     (answers (find-all-facts ((?o option)) (eq ?o:group state)))
+     (reaction none)
+     (value none)))
 
 (defrule r1
   (declare (salience 10))
@@ -238,8 +226,7 @@
   (item (name f26))
   =>
   (assert (item (name f41)))
-  (assert (sendmessagehalt "f41: Рыцарь + Магия огня -> Боевой класс"))
-  (halt)
+  (assert (sendmessage "f41: Рыцарь + Магия огня -> Боевой класс"))
 )
 
 (defrule r2
@@ -248,8 +235,7 @@
   (item (name f29))
   =>
   (assert (item (name f41)))
-  (assert (sendmessagehalt "f41: Рыцарь + Магия земли -> Боевой класс"))
-  (halt)
+  (assert (sendmessage "f41: Рыцарь + Магия земли -> Боевой класс"))
 )
 
 (defrule r3
@@ -258,8 +244,7 @@
   (item (name f27))
   =>
   (assert (item (name f42)))
-  (assert (sendmessagehalt "f42: Маг + Магия воды -> Магический класс"))
-  (halt)
+  (assert (sendmessage "f42: Маг + Магия воды -> Магический класс"))
 )
 
 (defrule r4
@@ -268,8 +253,7 @@
   (item (name f28))
   =>
   (assert (item (name f42)))
-  (assert (sendmessagehalt "f42: Маг + Магия воздуха -> Магический класс"))
-  (halt)
+  (assert (sendmessage "f42: Маг + Магия воздуха -> Магический класс"))
 )
 
 (defrule r5
@@ -278,8 +262,7 @@
   (item (name f24))
   =>
   (assert (item (name f43)))
-  (assert (sendmessagehalt "f43: Жрица + Священный щит -> Духовный путь"))
-  (halt)
+  (assert (sendmessage "f43: Жрица + Священный щит -> Духовный путь"))
 )
 
 (defrule r6
@@ -288,8 +271,7 @@
   (item (name f22))
   =>
   (assert (item (name f43)))
-  (assert (sendmessagehalt "f43: Жрица + Древний посох -> Духовный путь"))
-  (halt)
+  (assert (sendmessage "f43: Жрица + Древний посох -> Духовный путь"))
 )
 
 (defrule r7
@@ -298,8 +280,7 @@
   (item (name f30))
   =>
   (assert (item (name f44)))
-  (assert (sendmessagehalt "f44: Варвар + Магия тьмы -> Дикий путь"))
-  (halt)
+  (assert (sendmessage "f44: Варвар + Магия тьмы -> Дикий путь"))
 )
 
 (defrule r8
@@ -308,8 +289,7 @@
   (item (name f26))
   =>
   (assert (item (name f44)))
-  (assert (sendmessagehalt "f44: Варвар + Магия огня -> Дикий путь"))
-  (halt)
+  (assert (sendmessage "f44: Варвар + Магия огня -> Дикий путь"))
 )
 
 (defrule r9
@@ -318,8 +298,7 @@
   (item (name f23))
   =>
   (assert (item (name f45)))
-  (assert (sendmessagehalt "f45: Наёмник + Чёрный амулет -> Теневой путь"))
-  (halt)
+  (assert (sendmessage "f45: Наёмник + Чёрный амулет -> Теневой путь"))
 )
 
 (defrule r10
@@ -328,8 +307,7 @@
   (item (name f25))
   =>
   (assert (item (name f45)))
-  (assert (sendmessagehalt "f45: Наёмник + Кольцо власти -> Теневой путь"))
-  (halt)
+  (assert (sendmessage "f45: Наёмник + Кольцо власти -> Теневой путь"))
 )
 
 (defrule r11
@@ -338,8 +316,7 @@
   (item (name f16))
   =>
   (assert (item (name f48)))
-  (assert (sendmessagehalt "f48: Рыцарь + Дракон -> Охотник на чудовищ"))
-  (halt)
+  (assert (sendmessage "f48: Рыцарь + Дракон -> Охотник на чудовищ"))
 )
 
 (defrule r12
@@ -348,8 +325,7 @@
   (item (name f17))
   =>
   (assert (item (name f46)))
-  (assert (sendmessagehalt "f46: Рыцарь + Гоблин -> Защитник королевства"))
-  (halt)
+  (assert (sendmessage "f46: Рыцарь + Гоблин -> Защитник королевства"))
 )
 
 (defrule r13
@@ -358,8 +334,7 @@
   (item (name f20))
   =>
   (assert (item (name f47)))
-  (assert (sendmessagehalt "f47: Маг + Нежить -> Проводник магии"))
-  (halt)
+  (assert (sendmessage "f47: Маг + Нежить -> Проводник магии"))
 )
 
 (defrule r14
@@ -368,8 +343,7 @@
   (item (name f20))
   =>
   (assert (item (name f49)))
-  (assert (sendmessagehalt "f49: Жрица + Нежить -> Хранитель веры"))
-  (halt)
+  (assert (sendmessage "f49: Жрица + Нежить -> Хранитель веры"))
 )
 
 (defrule r15
@@ -378,8 +352,7 @@
   (item (name f18))
   =>
   (assert (item (name f50)))
-  (assert (sendmessagehalt "f50: Варвар + Тролль -> Разрушитель орд"))
-  (halt)
+  (assert (sendmessage "f50: Варвар + Тролль -> Разрушитель орд"))
 )
 
 (defrule r16
@@ -388,8 +361,7 @@
   (item (name f16))
   =>
   (assert (item (name f56)))
-  (assert (sendmessagehalt "f56: Северные земли + Дракон -> Северный поход"))
-  (halt)
+  (assert (sendmessage "f56: Северные земли + Дракон -> Северный поход"))
 )
 
 (defrule r17
@@ -398,8 +370,7 @@
   (item (name f17))
   =>
   (assert (item (name f57)))
-  (assert (sendmessagehalt "f57: Тёмные леса + Гоблин -> Лесная кампания"))
-  (halt)
+  (assert (sendmessage "f57: Тёмные леса + Гоблин -> Лесная кампания"))
 )
 
 (defrule r18
@@ -408,8 +379,7 @@
   (item (name f18))
   =>
   (assert (item (name f58)))
-  (assert (sendmessagehalt "f58: Солнечные равнины + Тролль -> Поход равнин"))
-  (halt)
+  (assert (sendmessage "f58: Солнечные равнины + Тролль -> Поход равнин"))
 )
 
 (defrule r19
@@ -418,8 +388,7 @@
   (item (name f19))
   =>
   (assert (item (name f59)))
-  (assert (sendmessagehalt "f59: Горные вершины + Волшебный зверь -> Горная экспедиция"))
-  (halt)
+  (assert (sendmessage "f59: Горные вершины + Волшебный зверь -> Горная экспедиция"))
 )
 
 (defrule r20
@@ -428,8 +397,7 @@
   (item (name f20))
   =>
   (assert (item (name f60)))
-  (assert (sendmessagehalt "f60: Туманные болота + Нежить -> Болотная миссия"))
-  (halt)
+  (assert (sendmessage "f60: Туманные болота + Нежить -> Болотная миссия"))
 )
 
 (defrule r21
@@ -438,8 +406,7 @@
   (item (name f16))
   =>
   (assert (item (name f78)))
-  (assert (sendmessagehalt "f78: Заброшенная крепость + Дракон -> Сломанное равновесие"))
-  (halt)
+  (assert (sendmessage "f78: Заброшенная крепость + Дракон -> Сломанное равновесие"))
 )
 
 (defrule r22
@@ -448,8 +415,7 @@
   (item (name f20))
   =>
   (assert (item (name f78)))
-  (assert (sendmessagehalt "f78: Древний храм + Нежить -> Сломанное равновесие"))
-  (halt)
+  (assert (sendmessage "f78: Древний храм + Нежить -> Сломанное равновесие"))
 )
 
 (defrule r23
@@ -458,8 +424,7 @@
   (item (name f18))
   =>
   (assert (item (name f79)))
-  (assert (sendmessagehalt "f79: Катакомбы + Тролль -> Потерянное знание"))
-  (halt)
+  (assert (sendmessage "f79: Катакомбы + Тролль -> Потерянное знание"))
 )
 
 (defrule r24
@@ -468,8 +433,7 @@
   (item (name f17))
   =>
   (assert (item (name f78)))
-  (assert (sendmessagehalt "f78: Магическая башня + Гоблин -> Сломанное равновесие"))
-  (halt)
+  (assert (sendmessage "f78: Магическая башня + Гоблин -> Сломанное равновесие"))
 )
 
 (defrule r25
@@ -478,8 +442,7 @@
   (item (name f19))
   =>
   (assert (item (name f78)))
-  (assert (sendmessagehalt "f78: Разрушенный мост + Волшебный зверь -> Сломанное равновесие"))
-  (halt)
+  (assert (sendmessage "f78: Разрушенный мост + Волшебный зверь -> Сломанное равновесие"))
 )
 
 (defrule r26
@@ -488,8 +451,7 @@
   (item (name f16))
   =>
   (assert (item (name f61)))
-  (assert (sendmessagehalt "f61: Магия огня + Дракон -> Контроль огня"))
-  (halt)
+  (assert (sendmessage "f61: Магия огня + Дракон -> Контроль огня"))
 )
 
 (defrule r27
@@ -498,8 +460,7 @@
   (item (name f20))
   =>
   (assert (item (name f62)))
-  (assert (sendmessagehalt "f62: Магия воды + Нежить -> Контроль воды"))
-  (halt)
+  (assert (sendmessage "f62: Магия воды + Нежить -> Контроль воды"))
 )
 
 (defrule r28
@@ -508,8 +469,7 @@
   (item (name f19))
   =>
   (assert (item (name f63)))
-  (assert (sendmessagehalt "f63: Магия воздуха + Волшебный зверь -> Контроль воздуха"))
-  (halt)
+  (assert (sendmessage "f63: Магия воздуха + Волшебный зверь -> Контроль воздуха"))
 )
 
 (defrule r29
@@ -518,8 +478,7 @@
   (item (name f18))
   =>
   (assert (item (name f64)))
-  (assert (sendmessagehalt "f64: Магия земли + Тролль -> Контроль земли"))
-  (halt)
+  (assert (sendmessage "f64: Магия земли + Тролль -> Контроль земли"))
 )
 
 (defrule r30
@@ -528,8 +487,7 @@
   (item (name f17))
   =>
   (assert (item (name f65)))
-  (assert (sendmessagehalt "f65: Магия тьмы + Гоблин -> Контроль тьмы"))
-  (halt)
+  (assert (sendmessage "f65: Магия тьмы + Гоблин -> Контроль тьмы"))
 )
 
 (defrule r31
@@ -538,8 +496,7 @@
   (item (name f78))
   =>
   (assert (item (name f90)))
-  (assert (sendmessagehalt "f90: Северный поход + Сломанное равновесие -> Последний шанс"))
-  (halt)
+  (assert (sendmessage "f90: Северный поход + Сломанное равновесие -> Последний шанс"))
 )
 
 (defrule r32
@@ -548,8 +505,7 @@
   (item (name f78))
   =>
   (assert (item (name f90)))
-  (assert (sendmessagehalt "f90: Лесная кампания + Сломанное равновесие -> Последний шанс"))
-  (halt)
+  (assert (sendmessage "f90: Лесная кампания + Сломанное равновесие -> Последний шанс"))
 )
 
 (defrule r33
@@ -558,8 +514,7 @@
   (item (name f79))
   =>
   (assert (item (name f90)))
-  (assert (sendmessagehalt "f90: Поход равнин + Потерянное знание -> Последний шанс"))
-  (halt)
+  (assert (sendmessage "f90: Поход равнин + Потерянное знание -> Последний шанс"))
 )
 
 (defrule r34
@@ -568,8 +523,7 @@
   (item (name f78))
   =>
   (assert (item (name f90)))
-  (assert (sendmessagehalt "f90: Горная экспедиция + Сломанное равновесие -> Последний шанс"))
-  (halt)
+  (assert (sendmessage "f90: Горная экспедиция + Сломанное равновесие -> Последний шанс"))
 )
 
 (defrule r35
@@ -578,8 +532,7 @@
   (item (name f78))
   =>
   (assert (item (name f90)))
-  (assert (sendmessagehalt "f90: Болотная миссия + Сломанное равновесие -> Последний шанс"))
-  (halt)
+  (assert (sendmessage "f90: Болотная миссия + Сломанное равновесие -> Последний шанс"))
 )
 
 (defrule r36
@@ -588,8 +541,7 @@
   (item (name f78))
   =>
   (assert (item (name f53)))
-  (assert (sendmessagehalt "f53: Пророчество + Сломанное равновесие -> Избранник пророчества"))
-  (halt)
+  (assert (sendmessage "f53: Пророчество + Сломанное равновесие -> Избранник пророчества"))
 )
 
 (defrule r37
@@ -598,8 +550,7 @@
   (item (name f79))
   =>
   (assert (item (name f53)))
-  (assert (sendmessagehalt "f53: Пророчество + Потерянное знание -> Избранник пророчества"))
-  (halt)
+  (assert (sendmessage "f53: Пророчество + Потерянное знание -> Избранник пророчества"))
 )
 
 (defrule r38
@@ -608,8 +559,7 @@
   (item (name f56))
   =>
   (assert (item (name f55)))
-  (assert (sendmessagehalt "f55: Мирное время + Северный поход -> Благословлённый герой"))
-  (halt)
+  (assert (sendmessage "f55: Мирное время + Северный поход -> Благословлённый герой"))
 )
 
 (defrule r39
@@ -618,8 +568,7 @@
   (item (name f78))
   =>
   (assert (item (name f54)))
-  (assert (sendmessagehalt "f54: Угроза миру + Сломанное равновесие -> Проклятый герой"))
-  (halt)
+  (assert (sendmessage "f54: Угроза миру + Сломанное равновесие -> Проклятый герой"))
 )
 
 (defrule r40
@@ -628,8 +577,7 @@
   (item (name f90))
   =>
   (assert (item (name f90)))
-  (assert (sendmessagehalt "f90: Угроза миру + Последний шанс -> Последний шанс"))
-  (halt)
+  (assert (sendmessage "f90: Угроза миру + Последний шанс -> Последний шанс"))
 )
 
 (defrule r41
@@ -638,8 +586,7 @@
   (item (name f71))
   =>
   (assert (item (name f48)))
-  (assert (sendmessagehalt "f48: Боевой класс + Драконья угроза -> Охотник на чудовищ"))
-  (halt)
+  (assert (sendmessage "f48: Боевой класс + Драконья угроза -> Охотник на чудовищ"))
 )
 
 (defrule r42
@@ -648,8 +595,7 @@
   (item (name f75))
   =>
   (assert (item (name f47)))
-  (assert (sendmessagehalt "f47: Магический класс + Восстание нежити -> Проводник магии"))
-  (halt)
+  (assert (sendmessage "f47: Магический класс + Восстание нежити -> Проводник магии"))
 )
 
 (defrule r43
@@ -658,8 +604,7 @@
   (item (name f78))
   =>
   (assert (item (name f49)))
-  (assert (sendmessagehalt "f49: Духовный путь + Сломанное равновесие -> Хранитель веры"))
-  (halt)
+  (assert (sendmessage "f49: Духовный путь + Сломанное равновесие -> Хранитель веры"))
 )
 
 (defrule r44
@@ -668,8 +613,7 @@
   (item (name f72))
   =>
   (assert (item (name f50)))
-  (assert (sendmessagehalt "f50: Дикий путь + Нашествие гоблинов -> Разрушитель орд"))
-  (halt)
+  (assert (sendmessage "f50: Дикий путь + Нашествие гоблинов -> Разрушитель орд"))
 )
 
 (defrule r45
@@ -678,8 +622,7 @@
   (item (name f73))
   =>
   (assert (item (name f48)))
-  (assert (sendmessagehalt "f48: Теневой путь + Ярость троллей -> Охотник на чудовищ"))
-  (halt)
+  (assert (sendmessage "f48: Теневой путь + Ярость троллей -> Охотник на чудовищ"))
 )
 
 (defrule r46
@@ -688,8 +631,7 @@
   (item (name f76))
   =>
   (assert (item (name f77)))
-  (assert (sendmessagehalt "f77: Контроль огня + Древний ритуал -> Печать стихий"))
-  (halt)
+  (assert (sendmessage "f77: Контроль огня + Древний ритуал -> Печать стихий"))
 )
 
 (defrule r47
@@ -698,8 +640,7 @@
   (item (name f76))
   =>
   (assert (item (name f77)))
-  (assert (sendmessagehalt "f77: Контроль воды + Древний ритуал -> Печать стихий"))
-  (halt)
+  (assert (sendmessage "f77: Контроль воды + Древний ритуал -> Печать стихий"))
 )
 
 (defrule r48
@@ -708,8 +649,7 @@
   (item (name f76))
   =>
   (assert (item (name f77)))
-  (assert (sendmessagehalt "f77: Контроль воздуха + Древний ритуал -> Печать стихий"))
-  (halt)
+  (assert (sendmessage "f77: Контроль воздуха + Древний ритуал -> Печать стихий"))
 )
 
 (defrule r49
@@ -718,8 +658,7 @@
   (item (name f76))
   =>
   (assert (item (name f77)))
-  (assert (sendmessagehalt "f77: Контроль земли + Древний ритуал -> Печать стихий"))
-  (halt)
+  (assert (sendmessage "f77: Контроль земли + Древний ритуал -> Печать стихий"))
 )
 
 (defrule r50
@@ -728,8 +667,7 @@
   (item (name f76))
   =>
   (assert (item (name f80)))
-  (assert (sendmessagehalt "f80: Контроль тьмы + Древний ритуал -> Запретная магия"))
-  (halt)
+  (assert (sendmessage "f80: Контроль тьмы + Древний ритуал -> Запретная магия"))
 )
 
 (defrule r51
@@ -738,8 +676,7 @@
   (item (name f71))
   =>
   (assert (item (name f90)))
-  (assert (sendmessagehalt "f90: Северный поход + Драконья угроза -> Последний шанс"))
-  (halt)
+  (assert (sendmessage "f90: Северный поход + Драконья угроза -> Последний шанс"))
 )
 
 (defrule r52
@@ -748,8 +685,7 @@
   (item (name f72))
   =>
   (assert (item (name f90)))
-  (assert (sendmessagehalt "f90: Лесная кампания + Нашествие гоблинов -> Последний шанс"))
-  (halt)
+  (assert (sendmessage "f90: Лесная кампания + Нашествие гоблинов -> Последний шанс"))
 )
 
 (defrule r53
@@ -758,8 +694,7 @@
   (item (name f73))
   =>
   (assert (item (name f90)))
-  (assert (sendmessagehalt "f90: Поход равнин + Ярость троллей -> Последний шанс"))
-  (halt)
+  (assert (sendmessage "f90: Поход равнин + Ярость троллей -> Последний шанс"))
 )
 
 (defrule r54
@@ -768,8 +703,7 @@
   (item (name f74))
   =>
   (assert (item (name f90)))
-  (assert (sendmessagehalt "f90: Горная экспедиция + Звериный хаос -> Последний шанс"))
-  (halt)
+  (assert (sendmessage "f90: Горная экспедиция + Звериный хаос -> Последний шанс"))
 )
 
 (defrule r55
@@ -778,8 +712,7 @@
   (item (name f75))
   =>
   (assert (item (name f90)))
-  (assert (sendmessagehalt "f90: Болотная миссия + Восстание нежити -> Последний шанс"))
-  (halt)
+  (assert (sendmessage "f90: Болотная миссия + Восстание нежити -> Последний шанс"))
 )
 
 (defrule r56
@@ -788,8 +721,7 @@
   (item (name f71))
   =>
   (assert (item (name f78)))
-  (assert (sendmessagehalt "f78: Штурм крепости + Драконья угроза -> Сломанное равновесие"))
-  (halt)
+  (assert (sendmessage "f78: Штурм крепости + Драконья угроза -> Сломанное равновесие"))
 )
 
 (defrule r57
@@ -798,8 +730,7 @@
   (item (name f75))
   =>
   (assert (item (name f78)))
-  (assert (sendmessagehalt "f78: Очищение храма + Восстание нежити -> Сломанное равновесие"))
-  (halt)
+  (assert (sendmessage "f78: Очищение храма + Восстание нежити -> Сломанное равновесие"))
 )
 
 (defrule r58
@@ -808,8 +739,7 @@
   (item (name f73))
   =>
   (assert (item (name f79)))
-  (assert (sendmessagehalt "f79: Исследование катакомб + Ярость троллей -> Потерянное знание"))
-  (halt)
+  (assert (sendmessage "f79: Исследование катакомб + Ярость троллей -> Потерянное знание"))
 )
 
 (defrule r59
@@ -818,8 +748,7 @@
   (item (name f72))
   =>
   (assert (item (name f78)))
-  (assert (sendmessagehalt "f78: Защита башни + Нашествие гоблинов -> Сломанное равновесие"))
-  (halt)
+  (assert (sendmessage "f78: Защита башни + Нашествие гоблинов -> Сломанное равновесие"))
 )
 
 (defrule r60
@@ -828,8 +757,7 @@
   (item (name f74))
   =>
   (assert (item (name f78)))
-  (assert (sendmessagehalt "f78: Восстановление моста + Звериный хаос -> Сломанное равновесие"))
-  (halt)
+  (assert (sendmessage "f78: Восстановление моста + Звериный хаос -> Сломанное равновесие"))
 )
 
 (defrule r61
@@ -838,8 +766,7 @@
   (item (name f71))
   =>
   (assert (item (name f71)))
-  (assert (sendmessagehalt "f71: Путь силы + Драконья угроза -> Драконья угроза"))
-  (halt)
+  (assert (sendmessage "f71: Путь силы + Драконья угроза -> Драконья угроза"))
 )
 
 (defrule r62
@@ -848,8 +775,7 @@
   (item (name f79))
   =>
   (assert (item (name f82)))
-  (assert (sendmessagehalt "f82: Путь мудрости + Потерянное знание -> Путь мудрости"))
-  (halt)
+  (assert (sendmessage "f82: Путь мудрости + Потерянное знание -> Путь мудрости"))
 )
 
 (defrule r63
@@ -858,8 +784,7 @@
   (item (name f78))
   =>
   (assert (item (name f83)))
-  (assert (sendmessagehalt "f83: Путь веры + Сломанное равновесие -> Путь веры"))
-  (halt)
+  (assert (sendmessage "f83: Путь веры + Сломанное равновесие -> Путь веры"))
 )
 
 (defrule r64
@@ -868,8 +793,7 @@
   (item (name f72))
   =>
   (assert (item (name f84)))
-  (assert (sendmessagehalt "f84: Путь ярости + Нашествие гоблинов -> Путь ярости"))
-  (halt)
+  (assert (sendmessage "f84: Путь ярости + Нашествие гоблинов -> Путь ярости"))
 )
 
 (defrule r65
@@ -878,8 +802,7 @@
   (item (name f75))
   =>
   (assert (item (name f85)))
-  (assert (sendmessagehalt "f85: Путь тени + Восстание нежити -> Путь тени"))
-  (halt)
+  (assert (sendmessage "f85: Путь тени + Восстание нежити -> Путь тени"))
 )
 
 (defrule r66
@@ -888,8 +811,7 @@
   (item (name f77))
   =>
   (assert (item (name f89)))
-  (assert (sendmessagehalt "f89: Избранник пророчества + Печать стихий -> Возрождение древних"))
-  (halt)
+  (assert (sendmessage "f89: Избранник пророчества + Печать стихий -> Возрождение древних"))
 )
 
 (defrule r67
@@ -898,8 +820,7 @@
   (item (name f80))
   =>
   (assert (item (name f87)))
-  (assert (sendmessagehalt "f87: Падение магии + Запретная магия -> Раскол мира"))
-  (halt)
+  (assert (sendmessage "f87: Падение магии + Запретная магия -> Раскол мира"))
 )
 
 (defrule r68
@@ -908,8 +829,7 @@
   (item (name f78))
   =>
   (assert (item (name f86)))
-  (assert (sendmessagehalt "f86: Последний шанс + Сломанное равновесие -> Союз королевств"))
-  (halt)
+  (assert (sendmessage "f86: Последний шанс + Сломанное равновесие -> Союз королевств"))
 )
 
 (defrule r69
@@ -918,8 +838,7 @@
   (item (name f82))
   =>
   (assert (item (name f82)))
-  (assert (sendmessagehalt "f82: Потерянное знание + Путь мудрости -> Путь мудрости"))
-  (halt)
+  (assert (sendmessage "f82: Потерянное знание + Путь мудрости -> Путь мудрости"))
 )
 
 (defrule r70
@@ -928,8 +847,7 @@
   (item (name f83))
   =>
   (assert (item (name f55)))
-  (assert (sendmessagehalt "f55: Благословлённый герой + Путь веры -> Благословлённый герой"))
-  (halt)
+  (assert (sendmessage "f55: Благословлённый герой + Путь веры -> Благословлённый герой"))
 )
 
 (defrule r71
@@ -938,8 +856,7 @@
   (item (name f71))
   =>
   (assert (item (name f71)))
-  (assert (sendmessagehalt "f71: Охотник на чудовищ + Драконья угроза -> Драконья угроза"))
-  (halt)
+  (assert (sendmessage "f71: Охотник на чудовищ + Драконья угроза -> Драконья угроза"))
 )
 
 (defrule r72
@@ -948,8 +865,7 @@
   (item (name f75))
   =>
   (assert (item (name f75)))
-  (assert (sendmessagehalt "f75: Проводник магии + Восстание нежити -> Восстание нежити"))
-  (halt)
+  (assert (sendmessage "f75: Проводник магии + Восстание нежити -> Восстание нежити"))
 )
 
 (defrule r73
@@ -958,8 +874,7 @@
   (item (name f78))
   =>
   (assert (item (name f83)))
-  (assert (sendmessagehalt "f83: Хранитель веры + Сломанное равновесие -> Путь веры"))
-  (halt)
+  (assert (sendmessage "f83: Хранитель веры + Сломанное равновесие -> Путь веры"))
 )
 
 (defrule r74
@@ -968,8 +883,7 @@
   (item (name f72))
   =>
   (assert (item (name f72)))
-  (assert (sendmessagehalt "f72: Разрушитель орд + Нашествие гоблинов -> Нашествие гоблинов"))
-  (halt)
+  (assert (sendmessage "f72: Разрушитель орд + Нашествие гоблинов -> Нашествие гоблинов"))
 )
 
 (defrule r75
@@ -978,8 +892,7 @@
   (item (name f73))
   =>
   (assert (item (name f73)))
-  (assert (sendmessagehalt "f73: Охотник на чудовищ + Ярость троллей -> Ярость троллей"))
-  (halt)
+  (assert (sendmessage "f73: Охотник на чудовищ + Ярость троллей -> Ярость троллей"))
 )
 
 (defrule r76
@@ -988,8 +901,7 @@
   (item (name f90))
   =>
   (assert (item (name f90)))
-  (assert (sendmessagehalt "f90: Союз королевств + Последний шанс -> Последний шанс"))
-  (halt)
+  (assert (sendmessage "f90: Союз королевств + Последний шанс -> Последний шанс"))
 )
 
 (defrule r77
@@ -998,8 +910,7 @@
   (item (name f90))
   =>
   (assert (item (name f90)))
-  (assert (sendmessagehalt "f90: Раскол мира + Последний шанс -> Последний шанс"))
-  (halt)
+  (assert (sendmessage "f90: Раскол мира + Последний шанс -> Последний шанс"))
 )
 
 (defrule r78
@@ -1008,8 +919,7 @@
   (item (name f90))
   =>
   (assert (item (name f90)))
-  (assert (sendmessagehalt "f90: Возрождение древних + Последний шанс -> Последний шанс"))
-  (halt)
+  (assert (sendmessage "f90: Возрождение древних + Последний шанс -> Последний шанс"))
 )
 
 (defrule r79
@@ -1018,8 +928,7 @@
   (item (name f90))
   =>
   (assert (item (name f90)))
-  (assert (sendmessagehalt "f90: Падение магии + Последний шанс -> Последний шанс"))
-  (halt)
+  (assert (sendmessage "f90: Падение магии + Последний шанс -> Последний шанс"))
 )
 
 (defrule r80
@@ -1028,8 +937,7 @@
   (item (name f90))
   =>
   (assert (item (name f90)))
-  (assert (sendmessagehalt "f90: Сломанное равновесие + Последний шанс -> Последний шанс"))
-  (halt)
+  (assert (sendmessage "f90: Сломанное равновесие + Последний шанс -> Последний шанс"))
 )
 
 (defrule r81
@@ -1038,8 +946,7 @@
   (item (name f90))
   =>
   (assert (item (name f301)))
-  (assert (sendmessagehalt "f301: Драконья угроза + Последний шанс -> Великий квест - уничтожение дракона"))
-  (halt)
+  (assert (sendmessage "f301: Драконья угроза + Последний шанс -> Великий квест - уничтожение дракона"))
 )
 
 (defrule r82
@@ -1048,8 +955,7 @@
   (item (name f90))
   =>
   (assert (item (name f302)))
-  (assert (sendmessagehalt "f302: Восстание нежити + Последний шанс -> Великий квест - очищение мира от нежити"))
-  (halt)
+  (assert (sendmessage "f302: Восстание нежити + Последний шанс -> Великий квест - очищение мира от нежити"))
 )
 
 (defrule r83
@@ -1058,8 +964,7 @@
   (item (name f90))
   =>
   (assert (item (name f306)))
-  (assert (sendmessagehalt "f306: Сломанное равновесие + Последний шанс -> Великий квест - предотвращение катастрофы"))
-  (halt)
+  (assert (sendmessage "f306: Сломанное равновесие + Последний шанс -> Великий квест - предотвращение катастрофы"))
 )
 
 (defrule r84
@@ -1068,8 +973,7 @@
   (item (name f90))
   =>
   (assert (item (name f303)))
-  (assert (sendmessagehalt "f303: Потерянное знание + Последний шанс -> Великий квест - восстановление магического баланса"))
-  (halt)
+  (assert (sendmessage "f303: Потерянное знание + Последний шанс -> Великий квест - восстановление магического баланса"))
 )
 
 (defrule r85
@@ -1078,8 +982,7 @@
   (item (name f90))
   =>
   (assert (item (name f307)))
-  (assert (sendmessagehalt "f307: Возрождение древних + Последний шанс -> Великий квест - объединение королевств"))
-  (halt)
+  (assert (sendmessage "f307: Возрождение древних + Последний шанс -> Великий квест - объединение королевств"))
 )
 
 (defrule r86
@@ -1088,8 +991,7 @@
   (item (name f90))
   =>
   (assert (item (name f300)))
-  (assert (sendmessagehalt "f300: Союз королевств + Последний шанс -> Великий квест - защита королевства"))
-  (halt)
+  (assert (sendmessage "f300: Союз королевств + Последний шанс -> Великий квест - защита королевства"))
 )
 
 (defrule r87
@@ -1098,8 +1000,7 @@
   (item (name f90))
   =>
   (assert (item (name f309)))
-  (assert (sendmessagehalt "f309: Раскол мира + Последний шанс -> Великий квест - последний рубеж человечества"))
-  (halt)
+  (assert (sendmessage "f309: Раскол мира + Последний шанс -> Великий квест - последний рубеж человечества"))
 )
 
 (defrule r88
@@ -1108,8 +1009,7 @@
   (item (name f90))
   =>
   (assert (item (name f303)))
-  (assert (sendmessagehalt "f303: Падение магии + Последний шанс -> Великий квест - восстановление магического баланса"))
-  (halt)
+  (assert (sendmessage "f303: Падение магии + Последний шанс -> Великий квест - восстановление магического баланса"))
 )
 
 (defrule r89
@@ -1118,8 +1018,7 @@
   (item (name f90))
   =>
   (assert (item (name f304)))
-  (assert (sendmessagehalt "f304: Благословлённый герой + Последний шанс -> Великий квест - исполнение пророчества"))
-  (halt)
+  (assert (sendmessage "f304: Благословлённый герой + Последний шанс -> Великий квест - исполнение пророчества"))
 )
 
 (defrule r90
@@ -1128,8 +1027,7 @@
   (item (name f90))
   =>
   (assert (item (name f304)))
-  (assert (sendmessagehalt "f304: Избранник пророчества + Последний шанс -> Великий квест - исполнение пророчества"))
-  (halt)
+  (assert (sendmessage "f304: Избранник пророчества + Последний шанс -> Великий квест - исполнение пророчества"))
 )
 
 (defrule r91
@@ -1138,8 +1036,7 @@
   (item (name f90))
   =>
   (assert (item (name f301)))
-  (assert (sendmessagehalt "f301: Охотник на чудовищ + Последний шанс -> Великий квест - уничтожение дракона"))
-  (halt)
+  (assert (sendmessage "f301: Охотник на чудовищ + Последний шанс -> Великий квест - уничтожение дракона"))
 )
 
 (defrule r92
@@ -1148,8 +1045,7 @@
   (item (name f90))
   =>
   (assert (item (name f303)))
-  (assert (sendmessagehalt "f303: Проводник магии + Последний шанс -> Великий квест - восстановление магического баланса"))
-  (halt)
+  (assert (sendmessage "f303: Проводник магии + Последний шанс -> Великий квест - восстановление магического баланса"))
 )
 
 (defrule r93
@@ -1158,8 +1054,7 @@
   (item (name f90))
   =>
   (assert (item (name f305)))
-  (assert (sendmessagehalt "f305: Хранитель веры + Последний шанс -> Великий квест - спасение древних земель"))
-  (halt)
+  (assert (sendmessage "f305: Хранитель веры + Последний шанс -> Великий квест - спасение древних земель"))
 )
 
 (defrule r94
@@ -1168,8 +1063,7 @@
   (item (name f90))
   =>
   (assert (item (name f308)))
-  (assert (sendmessagehalt "f308: Разрушитель орд + Последний шанс -> Великий квест - запечатывание тьмы"))
-  (halt)
+  (assert (sendmessage "f308: Разрушитель орд + Последний шанс -> Великий квест - запечатывание тьмы"))
 )
 
 (defrule r95
@@ -1178,8 +1072,7 @@
   (item (name f90))
   =>
   (assert (item (name f307)))
-  (assert (sendmessagehalt "f307: Путь мудрости + Последний шанс -> Великий квест - объединение королевств"))
-  (halt)
+  (assert (sendmessage "f307: Путь мудрости + Последний шанс -> Великий квест - объединение королевств"))
 )
 
 (defrule r96
@@ -1188,8 +1081,7 @@
   (item (name f90))
   =>
   (assert (item (name f300)))
-  (assert (sendmessagehalt "f300: Путь веры + Последний шанс -> Великий квест - защита королевства"))
-  (halt)
+  (assert (sendmessage "f300: Путь веры + Последний шанс -> Великий квест - защита королевства"))
 )
 
 (defrule r97
@@ -1198,8 +1090,7 @@
   (item (name f90))
   =>
   (assert (item (name f301)))
-  (assert (sendmessagehalt "f301: Путь ярости + Последний шанс -> Великий квест - уничтожение дракона"))
-  (halt)
+  (assert (sendmessage "f301: Путь ярости + Последний шанс -> Великий квест - уничтожение дракона"))
 )
 
 (defrule r98
@@ -1208,8 +1099,7 @@
   (item (name f90))
   =>
   (assert (item (name f308)))
-  (assert (sendmessagehalt "f308: Путь тени + Последний шанс -> Великий квест - запечатывание тьмы"))
-  (halt)
+  (assert (sendmessage "f308: Путь тени + Последний шанс -> Великий квест - запечатывание тьмы"))
 )
 
 (defrule r99
@@ -1218,8 +1108,7 @@
   (item (name f90))
   =>
   (assert (item (name f306)))
-  (assert (sendmessagehalt "f306: Печать стихий + Последний шанс -> Великий квест - предотвращение катастрофы"))
-  (halt)
+  (assert (sendmessage "f306: Печать стихий + Последний шанс -> Великий квест - предотвращение катастрофы"))
 )
 
 (defrule r100
@@ -1228,8 +1117,7 @@
   (item (name f90))
   =>
   (assert (item (name f309)))
-  (assert (sendmessagehalt "f309: Запретная магия + Последний шанс -> Великий квест - последний рубеж человечества"))
-  (halt)
+  (assert (sendmessage "f309: Запретная магия + Последний шанс -> Великий квест - последний рубеж человечества"))
 )
 
 (defrule r101
@@ -1238,8 +1126,7 @@
   (item (name f90))
   =>
   (assert (item (name f300)))
-  (assert (sendmessagehalt "f300: Штурм крепости + Последний шанс -> Великий квест - защита королевства"))
-  (halt)
+  (assert (sendmessage "f300: Штурм крепости + Последний шанс -> Великий квест - защита королевства"))
 )
 
 (defrule r102
@@ -1248,8 +1135,7 @@
   (item (name f90))
   =>
   (assert (item (name f303)))
-  (assert (sendmessagehalt "f303: Очищение храма + Последний шанс -> Великий квест - восстановление магического баланса"))
-  (halt)
+  (assert (sendmessage "f303: Очищение храма + Последний шанс -> Великий квест - восстановление магического баланса"))
 )
 
 (defrule r103
@@ -1258,8 +1144,7 @@
   (item (name f90))
   =>
   (assert (item (name f305)))
-  (assert (sendmessagehalt "f305: Исследование катакомб + Последний шанс -> Великий квест - спасение древних земель"))
-  (halt)
+  (assert (sendmessage "f305: Исследование катакомб + Последний шанс -> Великий квест - спасение древних земель"))
 )
 
 (defrule r104
@@ -1268,8 +1153,7 @@
   (item (name f90))
   =>
   (assert (item (name f309)))
-  (assert (sendmessagehalt "f309: Защита башни + Последний шанс -> Великий квест - последний рубеж человечества"))
-  (halt)
+  (assert (sendmessage "f309: Защита башни + Последний шанс -> Великий квест - последний рубеж человечества"))
 )
 
 (defrule r105
@@ -1278,8 +1162,7 @@
   (item (name f90))
   =>
   (assert (item (name f307)))
-  (assert (sendmessagehalt "f307: Восстановление моста + Последний шанс -> Великий квест - объединение королевств"))
-  (halt)
+  (assert (sendmessage "f307: Восстановление моста + Последний шанс -> Великий квест - объединение королевств"))
 )
 
 (defrule r106
@@ -1288,8 +1171,7 @@
   (item (name f90))
   =>
   (assert (item (name f300)))
-  (assert (sendmessagehalt "f300: Северный поход + Последний шанс -> Великий квест - защита королевства"))
-  (halt)
+  (assert (sendmessage "f300: Северный поход + Последний шанс -> Великий квест - защита королевства"))
 )
 
 (defrule r107
@@ -1298,8 +1180,7 @@
   (item (name f90))
   =>
   (assert (item (name f305)))
-  (assert (sendmessagehalt "f305: Лесная кампания + Последний шанс -> Великий квест - спасение древних земель"))
-  (halt)
+  (assert (sendmessage "f305: Лесная кампания + Последний шанс -> Великий квест - спасение древних земель"))
 )
 
 (defrule r108
@@ -1308,8 +1189,7 @@
   (item (name f90))
   =>
   (assert (item (name f300)))
-  (assert (sendmessagehalt "f300: Поход равнин + Последний шанс -> Великий квест - защита королевства"))
-  (halt)
+  (assert (sendmessage "f300: Поход равнин + Последний шанс -> Великий квест - защита королевства"))
 )
 
 (defrule r109
@@ -1318,8 +1198,7 @@
   (item (name f90))
   =>
   (assert (item (name f300)))
-  (assert (sendmessagehalt "f300: Горная экспедиция + Последний шанс -> Великий квест - защита королевства"))
-  (halt)
+  (assert (sendmessage "f300: Горная экспедиция + Последний шанс -> Великий квест - защита королевства"))
 )
 
 (defrule r110
@@ -1328,8 +1207,7 @@
   (item (name f90))
   =>
   (assert (item (name f300)))
-  (assert (sendmessagehalt "f300: Болотная миссия + Последний шанс -> Великий квест - защита королевства"))
-  (halt)
+  (assert (sendmessage "f300: Болотная миссия + Последний шанс -> Великий квест - защита королевства"))
 )
 
 (defrule r111
@@ -1338,8 +1216,7 @@
   (item (name f90))
   =>
   (assert (item (name f301)))
-  (assert (sendmessagehalt "f301: Боевой класс + Последний шанс -> Великий квест - уничтожение дракона"))
-  (halt)
+  (assert (sendmessage "f301: Боевой класс + Последний шанс -> Великий квест - уничтожение дракона"))
 )
 
 (defrule r112
@@ -1348,8 +1225,7 @@
   (item (name f90))
   =>
   (assert (item (name f303)))
-  (assert (sendmessagehalt "f303: Магический класс + Последний шанс -> Великий квест - восстановление магического баланса"))
-  (halt)
+  (assert (sendmessage "f303: Магический класс + Последний шанс -> Великий квест - восстановление магического баланса"))
 )
 
 (defrule r113
@@ -1358,8 +1234,7 @@
   (item (name f90))
   =>
   (assert (item (name f305)))
-  (assert (sendmessagehalt "f305: Духовный путь + Последний шанс -> Великий квест - спасение древних земель"))
-  (halt)
+  (assert (sendmessage "f305: Духовный путь + Последний шанс -> Великий квест - спасение древних земель"))
 )
 
 (defrule r114
@@ -1368,8 +1243,7 @@
   (item (name f90))
   =>
   (assert (item (name f301)))
-  (assert (sendmessagehalt "f301: Дикий путь + Последний шанс -> Великий квест - уничтожение дракона"))
-  (halt)
+  (assert (sendmessage "f301: Дикий путь + Последний шанс -> Великий квест - уничтожение дракона"))
 )
 
 (defrule r115
@@ -1378,8 +1252,7 @@
   (item (name f90))
   =>
   (assert (item (name f308)))
-  (assert (sendmessagehalt "f308: Теневой путь + Последний шанс -> Великий квест - запечатывание тьмы"))
-  (halt)
+  (assert (sendmessage "f308: Теневой путь + Последний шанс -> Великий квест - запечатывание тьмы"))
 )
 
 (defrule r116
@@ -1388,8 +1261,7 @@
   (item (name f90))
   =>
   (assert (item (name f307)))
-  (assert (sendmessagehalt "f307: Связь с королевством + Последний шанс -> Великий квест - объединение королевств"))
-  (halt)
+  (assert (sendmessage "f307: Связь с королевством + Последний шанс -> Великий квест - объединение королевств"))
 )
 
 (defrule r117
@@ -1398,8 +1270,7 @@
   (item (name f90))
   =>
   (assert (item (name f309)))
-  (assert (sendmessagehalt "f309: Изгнанник земель + Последний шанс -> Великий квест - последний рубеж человечества"))
-  (halt)
+  (assert (sendmessage "f309: Изгнанник земель + Последний шанс -> Великий квест - последний рубеж человечества"))
 )
 
 (defrule r118
@@ -1408,8 +1279,7 @@
   (item (name f90))
   =>
   (assert (item (name f308)))
-  (assert (sendmessagehalt "f308: Проклятый герой + Последний шанс -> Великий квест - запечатывание тьмы"))
-  (halt)
+  (assert (sendmessage "f308: Проклятый герой + Последний шанс -> Великий квест - запечатывание тьмы"))
 )
 
 (defrule r119
@@ -1418,8 +1288,7 @@
   (item (name f90))
   =>
   (assert (item (name f304)))
-  (assert (sendmessagehalt "f304: Благословлённый герой + Последний шанс -> Великий квест - исполнение пророчества"))
-  (halt)
+  (assert (sendmessage "f304: Благословлённый герой + Последний шанс -> Великий квест - исполнение пророчества"))
 )
 
 (defrule r120
@@ -1427,7 +1296,6 @@
   (item (name f90))
   =>
   (assert (item (name f309)))
-  (assert (sendmessagehalt "f309: Последний шанс -> Великий квест - последний рубеж человечества"))
-  (halt)
+  (assert (sendmessage "f309: Последний шанс -> Великий квест - последний рубеж человечества"))
 )
 
